@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,8 +23,6 @@ public class Main {
         System.out.println("Podaj imię: ");
         person.name = scanner.nextLine();
         System.out.println("Cześć " + person.name + " twój znak to "+person.personChar);
-
-        //Game.round(person, table.availableSquares, table, table.squares, person.winCounter, person.looseCounter, person.name);
         while(table.availableSquares.size()>=0) {
             table.printTable(table.squares);
             int ruch = scanner.nextInt();
