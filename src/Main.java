@@ -5,25 +5,38 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         Person person = new Person();
         Table table = new Table();
+        int charPicker = random.nextInt(2);
+        if(charPicker==0){
+            person.personChar='X';
+            person.computerChar='O';
+        }
+        else if(charPicker==1){
+            person.personChar='O';
+            person.computerChar='X';
+        }
         for(int i=1; i<10; i++) {
             table.availableSquares.add(i);
         }
+        System.out.println("Podaj imię: ");
         person.name = scanner.nextLine();
+        System.out.println("Cześć " + person.name + " twój znak to "+person.personChar);
+
         //Game.round(person, table.availableSquares, table, table.squares, person.winCounter, person.looseCounter, person.name);
         while(table.availableSquares.size()>=0) {
             table.printTable(table.squares);
             int ruch = scanner.nextInt();
-            table.squares[ruch - 1] = "X";
+            table.squares[ruch - 1] = person.personChar;
             table.availableSquares.removeIf(value -> value == ruch);
             person.isWinnerCheck(table.squares, person);
             if(person.isWinner==1){
                 person.winCounter++;
                 System.out.println(person.name + " wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
@@ -33,7 +46,7 @@ public class Main {
                 person.looseCounter++;
                 System.out.println("Komputer wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
@@ -42,20 +55,20 @@ public class Main {
             else if(table.availableSquares.size()==0 && (person.isWinner!=1 && person.isWinner!=2)){
                 System.out.println("Remis! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
                 }
             }
             int ruchKomputera = getRandomItem(table.availableSquares);
-            table.squares[ruchKomputera - 1] = "O";
+            table.squares[ruchKomputera - 1] = person.computerChar;
             table.availableSquares.removeIf(value -> value == ruchKomputera);
             if(person.isWinner==1){
                 person.winCounter++;
                 System.out.println(person.name + " wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
@@ -65,7 +78,7 @@ public class Main {
                 person.looseCounter++;
                 System.out.println("Komputer wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
@@ -74,7 +87,7 @@ public class Main {
             else if(table.availableSquares.size()==0 && (person.isWinner!=1 && person.isWinner!=2)){
                 System.out.println("Remis! Wynik to: "+person.winCounter+" : "+person.looseCounter);
                 person.isWinner=0;
-                table.squares= new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);

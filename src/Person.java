@@ -3,11 +3,13 @@ public class Person {
     int winCounter=0;
     int looseCounter=0;
     int isWinner=0;
-    public void isWinnerCheck(String[] cells, Person person) {
-        if((cells[0]=="X" && cells[3]=="X" && cells[6]=="X") || (cells[1]=="X" && cells[4]=="X" && cells[7]=="X") || (cells[2]=="X" && cells[5]=="X" && cells[8]=="X") || (cells[0]=="X" && cells[1]=="X" && cells[2]=="X") || (cells[3]=="X" && cells[4]=="X" && cells[5]=="X") || (cells[6]=="X" && cells[7]=="X" && cells[8]=="X") || (cells[0]=="X" && cells[4]=="X" && cells[8]=="X") || (cells[2]=="X" && cells[4]=="X" && cells[6]=="X")){
+    char personChar;
+    char computerChar;
+    public void isWinnerCheck(char[] cells, Person person) {
+        if((cells[0]==person.personChar && cells[3]==person.personChar && cells[6]==person.personChar) || (cells[1]==person.personChar && cells[4]==person.personChar && cells[7]==person.personChar) || (cells[2]==person.personChar && cells[5]==person.personChar && cells[8]==person.personChar) || (cells[0]==person.personChar && cells[1]==person.personChar && cells[2]==person.personChar) || (cells[3]==person.personChar && cells[4]==person.personChar && cells[5]==person.personChar) || (cells[6]==person.personChar && cells[7]==person.personChar && cells[8]==person.personChar) || (cells[0]==person.personChar && cells[4]==person.personChar && cells[8]==person.personChar) || (cells[2]==person.personChar && cells[4]==person.personChar && cells[6]==person.personChar)){
             person.isWinner=1;
         }
-        else if((cells[0]=="O" && cells[3]=="O" && cells[6]=="O") || (cells[1]=="O" && cells[4]=="O" && cells[7]=="O") || (cells[2]=="O" && cells[5]=="O" && cells[8]=="O") || (cells[0]=="O" && cells[1]=="O" && cells[2]=="O") || (cells[3]=="O" && cells[4]=="O" && cells[5]=="O") || (cells[6]=="O" && cells[7]=="O" && cells[8]=="O") || (cells[0]=="O" && cells[4]=="O" && cells[8]=="O") || (cells[2]=="O" && cells[4]=="O" && cells[6]=="O")){
+        else if((cells[0]==person.computerChar && cells[3]==person.computerChar && cells[6]==person.computerChar) || (cells[1]==person.computerChar && cells[4]==person.computerChar && cells[7]==person.computerChar) || (cells[2]==person.computerChar && cells[5]==person.computerChar && cells[8]==person.computerChar) || (cells[0]==person.computerChar && cells[1]==person.computerChar && cells[2]==person.computerChar) || (cells[3]==person.computerChar && cells[4]==person.computerChar && cells[5]==person.computerChar) || (cells[6]==person.computerChar && cells[7]==person.computerChar && cells[8]==person.computerChar) || (cells[0]==person.computerChar && cells[4]==person.computerChar && cells[8]==person.computerChar) || (cells[2]==person.computerChar && cells[4]==person.computerChar && cells[6]==person.computerChar)){
             person.isWinner=2;
         }
     }
