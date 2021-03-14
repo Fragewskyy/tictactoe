@@ -10,48 +10,48 @@ public class Main {
         Table table = new Table();
         int charPicker = random.nextInt(2);
         if(charPicker==0){
-            person.personChar='X';
-            person.computerChar='O';
+            person.setPersonChar('X');
+            person.setComputerChar('O');
         }
         else if(charPicker==1){
-            person.personChar='O';
-            person.computerChar='X';
+            person.setPersonChar('O');
+            person.setComputerChar('X');
         }
         for(int i=1; i<10; i++) {
             table.availableSquares.add(i);
         }
         System.out.println("Podaj imię: ");
         person.name = scanner.nextLine();
-        System.out.println("Cześć " + person.name + " twój znak to "+person.personChar);
+        System.out.println("Cześć " + person.name + " twój znak to "+person.getPersonChar());
         while(table.availableSquares.size()>=0) {
             table.printTable(table.squares);
             int ruch = scanner.nextInt();
-            table.squares[ruch - 1] = person.personChar;
+            table.squares[ruch - 1] = person.getPersonChar();
             table.availableSquares.removeIf(value -> value == ruch);
             person.isWinnerCheck(table.squares, person);
-            if(person.isWinner==1){
+            if(person.getIsWinner()==1){
                 person.winCounter++;
                 System.out.println(person.name + " wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
                 }
             }
-            else if(person.isWinner==2){
+            else if(person.getIsWinner()==2){
                 person.looseCounter++;
                 System.out.println("Komputer wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
                 }
             }
-            else if(table.availableSquares.size()==0 && (person.isWinner!=1 && person.isWinner!=2)){
+            else if(table.availableSquares.size()==0 && (person.getIsWinner()!=1 && person.getIsWinner()!=2)){
                 System.out.println("Remis! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
@@ -59,31 +59,31 @@ public class Main {
                 }
             }
             int ruchKomputera = getRandomItem(table.availableSquares);
-            table.squares[ruchKomputera - 1] = person.computerChar;
+            table.squares[ruchKomputera - 1] = person.getComputerChar();
             table.availableSquares.removeIf(value -> value == ruchKomputera);
-            if(person.isWinner==1){
+            if(person.getIsWinner()==1){
                 person.winCounter++;
                 System.out.println(person.name + " wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
                 }
             }
-            else if(person.isWinner==2){
+            else if(person.getIsWinner()==2){
                 person.looseCounter++;
                 System.out.println("Komputer wygrywa! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
                     table.availableSquares.add(i);
                 }
             }
-            else if(table.availableSquares.size()==0 && (person.isWinner!=1 && person.isWinner!=2)){
+            else if(table.availableSquares.size()==0 && (person.getIsWinner()!=1 && person.getIsWinner()!=2)){
                 System.out.println("Remis! Wynik to: "+person.winCounter+" : "+person.looseCounter);
-                person.isWinner=0;
+                person.setIsWinner(0);
                 table.squares= new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
                 table.availableSquares.clear();
                 for(int i=1; i<10; i++) {
